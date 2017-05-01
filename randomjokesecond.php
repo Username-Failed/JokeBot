@@ -1,0 +1,42 @@
+<?php
+    define ('DBUSER', 'root');
+    define ('DBPW', '');
+    define ('DBHOST', 'localhost');
+    define ('DBNAME', 'webudvikling');
+
+    if ($dbc = mysql_connect(DBHOST, DBUSER, DBPW)) {
+
+        if(!mysql_select_db(DBNAME)) {
+            trigger_error("Could not select the database!<br />MySQL Error: " . mysql_error());
+            exit();
+        }
+    } else {
+        trigger_error("Could not connect to MySQL!<br />MySQL Error: " . mysql_error());
+        exit();
+    }
+
+    $jokeResult = mysql_query("SELECT * FROM chuck");
+
+    $array = array();
+
+    while($row = mysql_fetch_array($jokeResult)) {
+        $array[] = $row["joke"];
+        //echo $row["joke"];
+    }
+
+    $key = array_rand($array, 1);
+
+    echo $array[$key];
+
+    /*
+    if (mysql_num_rows($jokeResult) > 0) {
+        // output data of each row
+        while($row = mysql_fetch_assoc($jokeResult)) {
+            echo "id: " . $row["id"]. " - Joke: " . $row["joke"] . "<br>";
+        }
+    } else {
+        echo "0 results";
+    }
+    */
+    mysql_close($dbc);
+?>
