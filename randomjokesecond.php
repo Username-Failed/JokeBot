@@ -1,8 +1,15 @@
 <?php
-    define ('DBUSER', 'root');
-    define ('DBPW', '');
-    define ('DBHOST', 'localhost');
-    define ('DBNAME', 'webudvikling');
+    /*
+        Edit the config.php.template file before you can use this script
+    */
+$configDone = false;
+
+    include("config.php");
+
+    if($configDone == false) {
+        echo "Error: Config File not made";
+        exit();
+    }
 
     if ($dbc = mysql_connect(DBHOST, DBUSER, DBPW)) {
 
@@ -40,3 +47,6 @@
     */
     mysql_close($dbc);
 ?>
+
+<br />
+<a href="randomjokesecond.php">Click to get a new joke</a>
