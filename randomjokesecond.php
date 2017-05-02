@@ -3,7 +3,7 @@
     function testForLastJoke($jokeId, $lastJoke, $jokeArray) {
         if ($jokeId == $lastJoke['lastJoke']) {
             $jokeId = array_rand($jokeArray, 1);
-            echo "Value Changed <br />";
+            //echo "Value Changed <br />";
             testForLastJoke($jokeId, $lastJoke, $jokeArray);
         }
         return $jokeId;
