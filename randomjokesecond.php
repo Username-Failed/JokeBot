@@ -1,8 +1,20 @@
 <?php
+
+    function testForLastJoke($jokeId, $lastJoke, $jokeArray) {
+        if ($jokeId == $lastJoke['lastJoke']) {
+            $jokeId = array_rand($jokeArray, 1);
+            echo "Value Changed <br />";
+            testForLastJoke($jokeId, $lastJoke, $jokeArray);
+        }
+        return $jokeId;
+    }
+
+    session_start();
+
     /*
         Edit the config.php.template file before you can use this script
     */
-$configDone = false;
+    $configDone = false;
 
     include("config.php");
 
@@ -33,7 +45,11 @@ $configDone = false;
 
     $key = array_rand($array, 1);
 
+    $key = testForLastJoke($key, $_SESSION['lastJoke'], $array);
+
     echo $array[$key];
+
+    $_SESSION['lastJoke'] = $key;
 
     /*
     if (mysql_num_rows($jokeResult) > 0) {
