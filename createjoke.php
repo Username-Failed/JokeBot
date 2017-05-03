@@ -4,5 +4,5 @@
     <br />
         <textarea name="joke" cols="50" rows="10"></textarea>
     <br />
-    <input type="submit" name="submitted" />
+    <input type="submit" value="Add Joke" >
 </form>

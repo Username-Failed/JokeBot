@@ -4,7 +4,7 @@
         if ($jokeId == $lastJoke['lastJoke']) {
             $jokeId = array_rand($jokeArray, 1);
             //echo "Value Changed <br />";
-            testForLastJoke($jokeId, $lastJoke, $jokeArray);
+            $jokeId = testForLastJoke($jokeId, $lastJoke, $jokeArray);
         }
         return $jokeId;
     }
@@ -47,7 +47,7 @@
 
     $key = testForLastJoke($key, $_SESSION['lastJoke'], $array);
 
-    echo $array[$key];
+    echo "<h1>" . $array[$key] . "</h1>";
 
     $_SESSION['lastJoke'] = $key;
 

@@ -40,6 +40,6 @@ while($row = mysql_fetch_array($jokeText)) {
     <br />
     <textarea name="joke" cols="50" rows="10"><?php echo $array[0] ?></textarea>
     <br />
-    <input type="submit" name="submitted" />
+    <input type="submit" value="Edit Joke">
     <input type="hidden" name="jokeId" value="<?php echo $_GET['jokeId'] ?>">
 </form>
