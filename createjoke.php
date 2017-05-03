@@ -1,3 +1,7 @@
+<?php
+    include("checkforsession.php");
+?>
+
 <h1>Joke Creation Tool</h1>
 <form action="modtag.php" method="POST">
     Joke:

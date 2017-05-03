@@ -1,5 +1,7 @@
 <?php
 
+include("checkforsession.php");
+
 /*
 Edit the config.php.template file before you can use this script
  */

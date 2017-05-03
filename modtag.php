@@ -1,4 +1,7 @@
 <?php
+
+    include("checkforsession.php");    
+
     $altOk = true;
 
     if(empty($_POST["joke"])) {
