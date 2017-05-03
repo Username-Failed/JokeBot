@@ -1,5 +1,5 @@
 <?php
-
+    /*
     function testForLastJoke($jokeId, $lastJoke, $jokeArray) {
         if ($jokeId == $lastJoke['lastJoke']) {
             $jokeId = array_rand($jokeArray, 1);
@@ -10,7 +10,7 @@
     }
 
     session_start();
-
+    */
     /*
         Edit the config.php.template file before you can use this script
     */
@@ -45,11 +45,11 @@
 
     $key = array_rand($array, 1);
 
-    $key = testForLastJoke($key, $_SESSION['lastJoke'], $array);
+    //$key = testForLastJoke($key, $_SESSION['lastJoke'], $array);
 
     $text = $array[$key] . "";
 
-    $_SESSION['lastJoke'] = $key;
+    //$_SESSION['lastJoke'] = $key;
 
     $result_json = array('color' => 'red', 'message' => $text, 'notify' => 'false', 'message_format' => 'text');
     //headers for not caching the results
