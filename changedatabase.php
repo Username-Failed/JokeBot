@@ -59,4 +59,10 @@
      echo "<form action='createjoke.php' method='GET'>";
      echo "<input type='submit' value='Add Joke'>";
      echo "</form>";
+     
+     echo "<br />";
+
+     echo "<form action='logout.php' method='GET'>";
+     echo "<input type='submit' value='Logout'>";
+     echo "</form>";
 ?>
