@@ -3,11 +3,11 @@
         if($_POST["password"] == "password") {
             header("Location: changedatabase.php");
         } else {
-            echo "Incorrect Password";
+            echo "Incorrect Username and/or Password";
             exit();
         }
     } else {
-        echo "Incorrect Username";
+        echo "Incorrect Username and/or Password";
         exit();
     }
 ?>

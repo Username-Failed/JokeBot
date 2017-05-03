@@ -3,16 +3,16 @@
 
     if(empty($_POST["joke"])) {
         $altOk = false;
-        echo "Fejl: joke mangler </br>";
+        echo "Error: joke missing </br>";
     } else {
     	if (strpos($_POST["joke"], ";") !== false) {
 	    	$altOk = false;
-		    echo "Fejl: \";\" er ikke tilladt </br>";
+		    echo "Error: \";\" is not legal </br>";
     	}
     }
 
     if ($altOk == true) {
-    echo "Tak for din joke. Oplysningerne herunder vil sendes til vores database. </br>";
+    echo "Thank you for your joke, it will now be sent to our database. </br>";
     echo "Joke: " . strip_tags($_POST["joke"]) . "</br>";
 
     include("config.php");
@@ -32,10 +32,10 @@
     $result = mysql_query($query) or trigger_error("Query</br>MySQL Error: " . mysql_error());
 
     } else {
-        echo "Ret venligst fejlen(e) p&aring; forrige side </br>";
+        echo "Please fix the error(s) on the site before </br>";
     }
 ?>
 
 <form action="changedatabase.php" method="GET">
-    <input type="submit" value="Tilbage til forside" />
+    <input type="submit" value="Back to overview" />
 </form>

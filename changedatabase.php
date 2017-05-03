@@ -25,16 +25,33 @@
     $jokeResult = mysql_query("SELECT * FROM chuck");
 
     $array = array();
+    $idArray = array();
 
     while($row = mysql_fetch_array($jokeResult)) {
         $array[] = $row["joke"];
+        $idArray[] = $row["id"];
         //echo $row["joke"];
     }
 
+    echo "<table>";
+    echo "<tr><td>id</td><td>Joke</td><td>Edit</td><td>Delete</td></tr>";
+
      foreach($array as $key => $value) {
-        echo $key + 1 . ". " . $value;
-        echo "<br /><br />";
+        echo "<tr><td>" . $idArray[$key] . "</td><td>" . $value . "</td>";
+
+        echo "<td><form action='editjoke.php' method='GET'>";
+        echo "<input type='submit' value='Edit'>";
+        echo "<input type='hidden' name='jokeId' value='" . $idArray[$key] . "'>";
+        echo "</form></td>";
+
+        echo "<td><form action='deletejoke.php' method='GET'>";
+        echo "<input type='submit' value='Delete'onclick='if (!confirm(\"Do you really want to remove this Joke?\")) return false' >";
+        echo "<input type='hidden' name='jokeId' value='" . $idArray[$key] . "'>";
+        echo "</form></td>";
+        echo "</tr>";
     }
+
+     echo "</table>";
 
      echo "<form action='createjoke.php' method='GET'>";
      echo "<input type='submit' value='Add Joke'>";
