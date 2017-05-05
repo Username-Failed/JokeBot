@@ -20,7 +20,7 @@
 
     function showImage($text) {
         if(startsWith($text, "http")) {
-            return "<img src='" . $text . "' height='20'>";
+            return "<img src='" . $text . "' height='100%'>";
         }
     }
 
