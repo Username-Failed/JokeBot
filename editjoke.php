@@ -45,3 +45,15 @@ while($row = mysql_fetch_array($jokeText)) {
     <input type="submit" value="Edit Joke">
     <input type="hidden" name="jokeId" value="<?php echo $_GET['jokeId'] ?>">
 </form>
+
+<?php
+function startsWith($haystack, $needle)
+{
+    $length = strlen($needle);
+    return (substr($haystack, 0, $length) === $needle);
+}
+
+if(startsWith($array[0], "http")) {
+    echo "<img src='" . $array[0] . "'>";
+}
+?>

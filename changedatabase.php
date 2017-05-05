@@ -2,6 +2,17 @@
 
     include("checkforsession.php");
 
+    function startsWith($haystack, $needle)
+    {
+        $length = strlen($needle);
+        return (substr($haystack, 0, $length) === $needle);
+    }
+
+    function showImage($text) {
+        if(startsWith($text, "http")) {
+            return "<img src='" . $text . "' height='20'>";
+        }
+    }
     /*
     Edit the config.php.template file before you can use this script
     */
@@ -37,10 +48,10 @@
     }
 
     echo "<table>";
-    echo "<tr><td>id</td><td>Joke</td><td>Edit</td><td>Delete</td></tr>";
+    echo "<tr><td>id</td><td>Image</td><td>Joke</td><td>Edit</td><td>Delete</td></tr>";
 
      foreach($array as $key => $value) {
-        echo "<tr><td>" . $idArray[$key] . "</td><td>" . $value . "</td>";
+        echo "<tr><td>" . $idArray[$key] . "</td><td>" . showImage($value) . "</td><td>" . $value . "</td>";
 
         echo "<td><form action='editjoke.php' method='GET'>";
         echo "<input type='submit' value='Edit'>";
@@ -59,7 +70,7 @@
      echo "<form action='createjoke.php' method='GET'>";
      echo "<input type='submit' value='Add Joke'>";
      echo "</form>";
-     
+
      echo "<br />";
 
      echo "<form action='logout.php' method='GET'>";

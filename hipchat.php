@@ -11,6 +11,19 @@
 
     session_start();
     */
+
+    function startsWith($haystack, $needle)
+    {
+        $length = strlen($needle);
+        return (substr($haystack, 0, $length) === $needle);
+    }
+
+    function showImage($text) {
+        if(startsWith($text, "http")) {
+            return "<img src='" . $text . "' height='20'>";
+        }
+    }
+
     /*
         Edit the config.php.template file before you can use this script
     */
@@ -50,8 +63,11 @@
     $text = $array[$key] . "";
 
     //$_SESSION['lastJoke'] = $key;
-
-    $result_json = array('color' => 'red', 'message' => $text, 'notify' => 'false', 'message_format' => 'text');
+    if(startsWith($text, "http")) {
+        $result_json = array('color' => 'red', 'message' => '<img src="' . $text . '">', 'notify' => 'false', 'message_format' => 'html');
+    } else {
+        $result_json = array('color' => 'red', 'message' => $text, 'notify' => 'false', 'message_format' => 'text');
+    }
     //headers for not caching the results
     header('Cache-Control: no-cache, must-revalidate');
     header('Expires: Mon, Jul 26 1997 05:00:00 GMT');
@@ -59,6 +75,6 @@
     header('Content-type: application/json');
     //send the result now
     echo json_encode($result_json);
-    
+
     mysql_close($dbc);
 ?>
